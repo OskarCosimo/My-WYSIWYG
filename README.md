@@ -93,7 +93,7 @@ Below are all the available string values you can pass into the `toolbar` array 
 | **Lists** | `'ul'` (Unordered/Bullets), `'ol'` (Ordered/Numbers) |
 | **Inserts** | `'link'`, `'image'`, `'video'`, `'emoji'`, `'code'`, `'hr'` (Horizontal Line) |
 | **Actions** | `'undo'`, `'redo'`, `'html'` (Toggle Source Code) |
-| **UI Elements** | `'|'` (Creates a vertical visual separator) |
+| **UI Elements** | <code>'&#124;'</code> (Creates a vertical visual separator) |
 
 ## 🛡️ Security Guidelines (Crucial)
 
