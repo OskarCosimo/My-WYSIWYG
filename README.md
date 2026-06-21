@@ -95,6 +95,56 @@ Below are all the available string values you can pass into the `toolbar` array 
 | **Actions** | `'undo'`, `'redo'`, `'html'` (Toggle Source Code) |
 | **UI Elements** | <code>'&#124;'</code> (Creates a vertical visual separator) |
 
+## 🔌 Developer API & Events
+
+My-WYSIWYG is designed to be developer-friendly. It creates a dynamic `contenteditable` container (`.my-wysiwyg-editor`) and synchronizes its content back to your original `<textarea>`. 
+
+Here is how you can interact with the editor programmatically.
+
+### Listening to Real-Time Changes (Events)
+If you need to trigger actions while the user is typing (e.g., for live character counters, real-time previews, or auto-saving), you should listen to the `input` event delegated to the `.my-wysiwyg-editor` class.
+
+**Using Vanilla JavaScript:**
+```javascript
+document.addEventListener('input', function(e) {
+    if (e.target.classList.contains('my-wysiwyg-editor')) {
+        // Extract plain text (strips out all HTML tags)
+        let plainText = e.target.innerText || e.target.textContent;
+        
+        // Extract raw HTML formatted content
+        let htmlContent = e.target.innerHTML;
+        
+        console.log('User is typing. Current text length:', plainText.length);
+    }
+});
+
+```
+
+**Using jQuery:**
+
+```javascript
+$(document).on('input', '.my-wysiwyg-editor', function() {
+    let plainText = $(this).text();
+    let htmlContent = $(this).html();
+    
+    console.log('Real-time text:', plainText);
+});
+
+```
+
+### Retrieving the Data
+
+You do not need to call any custom methods to extract the data for your backend. The plugin operates as a "puppeteer", automatically syncing the visual HTML back to your original hidden `<textarea>`'s `value` attribute on blur or form submission.
+
+```javascript
+// Simply grab the value of your original element as you normally would!
+let finalHtmlToSubmit = document.querySelector('#editor').value;
+
+// Or in jQuery: 
+// let finalHtmlToSubmit = $('#editor').val();
+
+```
+
 ## 🛡️ Security Guidelines (Crucial)
 
 **My-WYSIWYG** implements frontend safeguards (like blocking `javascript:` URIs in links and escaping HTML inside `<pre><code>` blocks) to prevent accidental Self-XSS.
