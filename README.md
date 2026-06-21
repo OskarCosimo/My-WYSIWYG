@@ -72,14 +72,28 @@ document.addEventListener('DOMContentLoaded', () => {
 ## ⚙️ Configuration Options
 
 | Option | Type | Default | Description |
-| --- | --- | --- | --- |
+| :--- | :--- | :--- | :--- |
 | `lang` | `string` | `'en'` | The language key matching the `MyWysiwygI18n` dictionary. |
 | `maxChars` | `number` | `Infinity` | The strict character limit. Blocks typing and truncates pasted text. |
 | `minHeight` | `string` | `'150px'` | Minimum CSS height of the editable area. |
 | `maxHeight` | `string` | `'400px'` | Maximum CSS height before internal scrolling activates. |
 | `placeholder` | `string` | *(Native attr)* | Placeholder text. Defaults to the `<textarea>`'s native attribute. |
-| `toolbar` | `array` | *(Full array)* | Array of strings defining the active buttons and their order. |
+| `toolbar` | `array` | *(Full array)* | Array of strings defining the active buttons. **See Toolbar Options below.** |
 | `emojis` | `array` | *(12 emojis)* | Array of emoji strings available in the dropdown picker. |
+
+### 🧰 Toolbar Options
+
+Below are all the available string values you can pass into the `toolbar` array to customize your editor's interface. 
+
+| Category | Available Values |
+| :--- | :--- |
+| **Fonts & Color** | `'fontName'`, `'fontSize'`, `'foreColor'` |
+| **Text Style** | `'bold'`, `'italic'`, `'underline'` |
+| **Alignment** | `'alignLeft'`, `'alignCenter'`, `'alignRight'`, `'alignJustify'` |
+| **Lists** | `'ul'` (Unordered/Bullets), `'ol'` (Ordered/Numbers) |
+| **Inserts** | `'link'`, `'image'`, `'video'`, `'emoji'`, `'code'`, `'hr'` (Horizontal Line) |
+| **Actions** | `'undo'`, `'redo'`, `'html'` (Toggle Source Code) |
+| **UI Elements** | `'|'` (Creates a vertical visual separator) |
 
 ## 🛡️ Security Guidelines (Crucial)
 
